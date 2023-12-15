@@ -29,7 +29,6 @@ export const coursesController = {
   },
 
   //   GET /courses/search?name=
-
   search: async (req: Request, res: Response) => {
     const { name } = req.query;
     const [page, perPage] = getPaginationParams(req.query);
