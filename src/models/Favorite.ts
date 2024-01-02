@@ -1,7 +1,7 @@
 import { DataTypes, Model } from "sequelize";
-import { UserInstance } from "./User";
-import { CourseInstance } from "./Course";
 import { database } from "../database";
+import { CourseInstance } from "./Course";
+import { UserInstance } from "./User";
 
 export interface Favorite {
   userId: number;
@@ -9,8 +9,8 @@ export interface Favorite {
 }
 
 export interface FavoriteInstance extends Model<Favorite>, Favorite {
-  course?: CourseInstance;
-  user?: UserInstance;
+  Course?: CourseInstance;
+  User?: UserInstance;
 }
 
 export const Favorite = database.define<FavoriteInstance, Favorite>(
@@ -20,7 +20,10 @@ export const Favorite = database.define<FavoriteInstance, Favorite>(
       allowNull: false,
       primaryKey: true,
       type: DataTypes.INTEGER,
-      references: { model: "users", key: "id" },
+      references: {
+        model: "users",
+        key: "id",
+      },
       onUpdate: "CASCADE",
       onDelete: "CASCADE",
     },
@@ -28,7 +31,10 @@ export const Favorite = database.define<FavoriteInstance, Favorite>(
       allowNull: false,
       primaryKey: true,
       type: DataTypes.INTEGER,
-      references: { model: "courses", key: "id" },
+      references: {
+        model: "courses",
+        key: "id",
+      },
       onUpdate: "CASCADE",
       onDelete: "CASCADE",
     },
