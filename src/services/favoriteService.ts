@@ -1,5 +1,4 @@
-import { Course } from "./../models/Course";
-import { Course, Favorite } from "../models";
+import { Favorite } from "../models";
 
 export const favoriteService = {
   create: async (userId: number, courseId: number) => {
@@ -33,5 +32,13 @@ export const favoriteService = {
         courseId,
       },
     });
+  },
+
+  isFavorited: async (userId: number, courseId: number) => {
+    const favorite = Favorite.findOne({
+      where: { userId, courseId },
+    });
+
+    return favorite !== null ? true : false;
   },
 };
