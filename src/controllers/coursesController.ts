@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { courseService } from "../services/courseService";
-import { error } from "console";
 import { getPaginationParams } from "../helpers/getPaginationParams";
 import { AuthenticatedRequest } from "../middlewares/auth";
 import { likeService } from "../services/LikeService";
@@ -12,6 +11,19 @@ export const coursesController = {
     try {
       const featuredCourses = await courseService.getRandomFeaturedCourses();
       return res.json(featuredCourses);
+    } catch (err) {
+      if (err instanceof Error) {
+        return res.status(400).json({ message: err.message });
+      }
+    }
+  },
+
+  //   GET /courses/popular
+
+  popular: async (req: Request, res: Response) => {
+    try {
+      const topTen = await courseService.getTopTenLiked();
+      return res.json(topTen);
     } catch (err) {
       if (err instanceof Error) {
         return res.status(400).json({ message: err.message });
