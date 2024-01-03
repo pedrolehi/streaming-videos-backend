@@ -5,10 +5,7 @@ import { episodesController } from "./controllers/episodesController";
 import { authController } from "./controllers/authController";
 import { ensureAuth, ensureAuthViaQuery } from "./middlewares/auth";
 import { favoritesController } from "./controllers/favoritesController";
-import {
-  likesController,
-  likesController,
-} from "./controllers/likesController";
+import { likesController } from "./controllers/likesController";
 
 const router = express.Router();
 
@@ -30,6 +27,16 @@ router.get("/courses/:id", ensureAuth, coursesController.show);
 
 // Episodes
 router.get("/episodes/stream", ensureAuthViaQuery, episodesController.stream);
+router.get(
+  "/episodes/:id/watchTime",
+  ensureAuth,
+  episodesController.getWatchTime
+);
+router.post(
+  "/episodes/:id/watchTime",
+  ensureAuth,
+  episodesController.setWatchTime
+);
 
 // Favorites
 router.get("/favorites", ensureAuth, favoritesController.index);
