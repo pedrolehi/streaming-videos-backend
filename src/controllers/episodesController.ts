@@ -40,7 +40,7 @@ export const episodesController = {
     }
   },
   // POST /episodes/:id/watchTime
-  // POST /episodes/:id/watchTime
+
   setWatchTime: async (req: AuthenticatedRequest, res: Response) => {
     const userId = req.user!.id;
     const episodeId = Number(req.params.id);
