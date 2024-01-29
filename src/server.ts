@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import { database } from "./database";
@@ -16,8 +19,8 @@ app.use(router);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  database.authenticate().then(() => {
-    console.log("DB connected.");
-  });
-  console.log(`Server started at port ${PORT}`);
+    database.authenticate().then(() => {
+        console.log("DB connected.");
+    });
+    console.log(`Server started at port ${PORT}`);
 });
