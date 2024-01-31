@@ -6,4 +6,3 @@ export const ADMINJS_COOKIE_PASSWORD = env
     .required()
     .asString();
 export const JWT_KEY = env.get("JWT_KEY").required().asString();
-export const DB_ENDPOINT = env.get("DB_ENDPOINT").required().asString();
