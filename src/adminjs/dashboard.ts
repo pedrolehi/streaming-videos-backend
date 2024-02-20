@@ -1,4 +1,4 @@
-import AdminJS, { PageHandler } from "adminJs";
+import AdminJS, { PageHandler } from "adminjs";
 import { Course, Episode, Category, User } from "../models";
 
 export const dashbosrdOptions: { handler?: PageHandler; component?: string } = {

@@ -4,11 +4,11 @@ services:
   web:
     build: .
 
-    image: node:20
-
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+
+    image: node:20
 
     ports:
       - 3000:3000

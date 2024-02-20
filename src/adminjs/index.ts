@@ -1,5 +1,5 @@
 import { database } from "./../database";
-import AdminJs from "adminJs";
+import AdminJs from "adminjs";
 import AdminJsExpress from "@adminjs/express";
 import AdminJsSequelize from "@adminjs/sequelize";
 import { adminJsResources } from "./resources";
@@ -18,22 +18,22 @@ store.sync();
 AdminJs.registerAdapter(AdminJsSequelize);
 
 export const adminJs = new AdminJs({
-    databases: [database],
-    rootPath: "/admin",
-    resources: adminJsResources,
-    branding: brandingOptions,
-    locale: locale,
-    dashboard: dashbosrdOptions,
+  databases: [database],
+  rootPath: "/admin",
+  resources: adminJsResources,
+  branding: brandingOptions,
+  locale: locale,
+  dashboard: dashbosrdOptions,
 });
 
 export const adminJsRouter = AdminJsExpress.buildAuthenticatedRouter(
-    adminJs,
-    authenticationOptions,
-    null,
-    {
-        resave: false,
-        saveUninitialized: false,
-        store: store,
-        secret: ADMINJS_COOKIE_PASSWORD,
-    }
+  adminJs,
+  authenticationOptions,
+  null,
+  {
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+    secret: ADMINJS_COOKIE_PASSWORD,
+  }
 );

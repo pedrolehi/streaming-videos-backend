@@ -13,9 +13,11 @@ RUN npm install
 
 COPY . /usr/src/app
 
+RUN npm run build
+
 EXPOSE 3000
 
 # Use production node environment by default.
 ENV NODE_ENV production
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "run", "start" ]

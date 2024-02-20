@@ -13,10 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dashbosrdOptions = void 0;
-const adminJs_1 = __importDefault(require("adminJs"));
+const adminjs_1 = __importDefault(require("adminjs"));
 const models_1 = require("../models");
 exports.dashbosrdOptions = {
-    component: adminJs_1.default.bundle("./components/Dashboard"),
+    component: adminjs_1.default.bundle("./components/Dashboard"),
     handler: (req, res, context) => __awaiter(void 0, void 0, void 0, function* () {
         const courses = yield models_1.Course.count();
         const episodes = yield models_1.Episode.count();
